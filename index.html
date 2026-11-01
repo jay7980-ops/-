@@ -58,6 +58,7 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
 <div class="hint">💡 폰·PC 어디서든 이 페이지를 열면 최근 저장된 수급을 볼 수 있어요. 매 거래일 종가 후 자동 갱신됩니다.</div>
 
 <div class="card" id="macro"></div>
+<div class="card" id="inv"></div>
 <div class="card war" id="war"></div>
 <div class="card" id="season"></div>
 <div class="card" id="kre"></div>
@@ -105,9 +106,27 @@ const MACRO = {"kospi": 5730.74, "kospiR": -3.48, "kosdaq": 724.38, "kosdaqR": -
       `<div class="stat"><div class="slab">원/달러 환율</div><div class="sval">${MACRO.usdkrw.toLocaleString()}</div><div class="snote">원화 약세↑ 시 외국인 매도압력</div></div>`+
       `<div class="stat"><div class="slab">美 10년물 금리</div><div class="sval">${MACRO.tnx.toFixed(2)}%</div><div class="snote">52주고 ${MACRO.tnxHi}% · 고점 부근</div></div>`+
       `<div class="stat"><div class="slab">WTI 유가</div><div class="sval">$${MACRO.wti.toFixed(1)}</div><div class="snote">이란 리스크로 $100 상회</div></div>`+
-      `<div class="stat"><div class="slab">투자자별·선물 수급(집계)</div><div class="sval" style="font-size:12.5px;color:#8c959f">소스 연동 대기</div><div class="snote">KRX 로그인/키움API 필요 — 거짓수치 방지 위해 공란</div></div>`+
+      `<div class="stat"><div class="slab">투자자별 선물 수급</div><div class="sval" style="font-size:12.5px;color:#8c959f">미연동</div><div class="snote">현물은 아래 '투자자별 순매수' 카드 · 선물은 KIS API 필요</div></div>`+
     `</div>`+
     `<div class="disc">※ 지수=다음금융(KRX 확정) · 환율·금리·유가=시장데이터(${MACRO.asofUS}). 참고용 지표.</div>`;
+})();
+
+// ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
+const INV = {"kospi": {"f": -16149, "i": 7540, "p": 5781}, "kosdaq": {"f": 2, "i": -1342, "p": 1253}, "asof": "2026-10-30"};
+(function(){
+  const el = document.getElementById('inv');
+  if(!INV || (!INV.kospi && !INV.kosdaq)){ if(el) el.remove(); return; }
+  const col = n => n>0?'#d6213a':(n<0?'#0969da':'#656d76');
+  const sg  = n => (n>0?'+':'')+Number(n).toLocaleString()+'억';
+  const box = (lbl,o)=> o ? `<div class="stat"><div class="slab">${lbl}</div>`+
+      `<div class="snote" style="font-size:12.5px;line-height:1.8;color:#1f2328">`+
+      `외국인 <b style="color:${col(o.f)}">${sg(o.f)}</b><br>`+
+      `기관 <b style="color:${col(o.i)}">${sg(o.i)}</b><br>`+
+      `개인 <b style="color:${col(o.p)}">${sg(o.p)}</b></div></div>` : '';
+  el.innerHTML =
+    `<div class="ctitle">💵 투자자별 순매수 (현물 집계) <span style="font-weight:400;color:#8c959f;font-size:11px">· ${INV.asof} · pykrx(KRX)</span></div>`+
+    `<div class="stats">`+ box('코스피', INV.kospi)+ box('코스닥', INV.kosdaq)+ `</div>`+
+    `<div class="disc">※ 전체시장 투자자별 순매수(거래대금, 억원). 실데이터(KRX). 선물 수급은 별도 소스 필요.</div>`;
 })();
 
 // ── 장중 특징 수급 뉴스 (제일 아래) ──
