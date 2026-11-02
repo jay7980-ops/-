@@ -114,7 +114,7 @@ const MACRO = {"kospi": 5859.08, "kospiR": 2.24, "kosdaq": 734.36, "kosdaqR": 1.
 })();
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
-const INV = {"kospi": {"f": -3832, "i": 12245, "p": -13151}, "kosdaq": {"f": -366, "i": 627, "p": -362}, "asof": "2026-11-02", "fut": {"f": 1535, "i": -857, "p": -529, "asof": "2026-11-02", "name": "F 202612"}};
+const INV = {"kospi": {"f": -3832, "i": 12245, "p": -13151}, "kosdaq": {"f": -366, "i": 627, "p": -362}, "asof": "2026-11-02", "fut": {"f": 3525, "i": -1968, "p": -1215, "fc": 1535, "ic": -857, "pc": -529, "asof": "2026-11-02", "name": "F 202612"}};
 (function(){
   const el = document.getElementById('inv');
   if(!INV || (!INV.kospi && !INV.kosdaq && !INV.fut)){ if(el) el.remove(); return; }
@@ -125,10 +125,16 @@ const INV = {"kospi": {"f": -3832, "i": 12245, "p": -13151}, "kosdaq": {"f": -36
       `외국인 <b style="color:${col(o.f)}">${sg(o.f,u)}</b><br>`+
       `기관 <b style="color:${col(o.i)}">${sg(o.i,u)}</b><br>`+
       `개인 <b style="color:${col(o.p)}">${sg(o.p,u)}</b></div></div>` : '';
+  const boxF = o => o ? `<div class="stat"><div class="slab">코스피200 선물</div>`+
+      `<div class="snote" style="font-size:12.5px;line-height:1.8;color:#1f2328">`+
+      `외국인 <b style="color:${col(o.f)}">${sg(o.f)}</b><br>`+
+      `기관 <b style="color:${col(o.i)}">${sg(o.i)}</b><br>`+
+      `개인 <b style="color:${col(o.p)}">${sg(o.p)}</b></div>`+
+      `<div style="font-size:9px;color:#8c959f;margin-top:3px">환산 · 외${(o.fc||0).toLocaleString()}/기${(o.ic||0).toLocaleString()}/개${(o.pc||0).toLocaleString()}계약</div></div>` : '';
   el.innerHTML =
     `<div class="ctitle">💵 투자자별 순매수 (현물+선물) <span style="font-weight:400;color:#8c959f;font-size:11px">· ${INV.asof}</span></div>`+
-    `<div class="stats">`+ box('코스피 (현물)', INV.kospi)+ box('코스닥 (현물)', INV.kosdaq)+ box('코스피200 선물', INV.fut, '계약')+ `</div>`+
-    `<div class="disc">※ 현물=순매수 거래대금(억·KRX/pykrx) · 선물=순매수 계약수(코스피200 근월물·다음금융). 실데이터.</div>`;
+    `<div class="stats">`+ box('코스피 (현물)', INV.kospi)+ box('코스닥 (현물)', INV.kosdaq)+ boxF(INV.fut)+ `</div>`+
+    `<div class="disc">※ 현물=순매수 거래대금(억·pykrx/KRX) · 선물=코스피200 근월물 순매수 환산 억원(계약×종가×25만승수·다음금융). 실데이터.</div>`;
 })();
 
 // ── 장중 특징 수급 뉴스 (제일 아래) ──
