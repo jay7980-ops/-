@@ -104,7 +104,7 @@ const WAR = {
 })();
 
 // ── 매크로 지표: 지수·환율·국채금리·유가 (상단) ──
-const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -5.03, "usdkrw": 1357, "tnx": 4.84, "tnxHi": 5.36, "wti": 90.5, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.06", "asofUS": "2026.11.06", "btc": 75829, "btcR": 0.1};
+const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -5.03, "usdkrw": 1357, "tnx": 4.84, "tnxHi": 5.36, "wti": 90.5, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.06", "asofUS": "2026.11.06", "btc": 75804, "btcR": 0.07};
 (function(){
   const pct=r=>`<span style="color:${r>0?'#d6213a':(r<0?'#0969da':'#656d76')}">${r>0?'+':''}${r.toFixed(2)}%</span>`;
   document.getElementById('macro').innerHTML =
@@ -116,13 +116,12 @@ const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -
       `<div class="stat"><div class="slab">美 10년물 금리</div><div class="sval">${MACRO.tnx.toFixed(2)}%</div><div class="snote">52주고 ${MACRO.tnxHi}% · 고점 부근</div></div>`+
       `<div class="stat"><div class="slab">WTI 유가</div><div class="sval">$${MACRO.wti.toFixed(1)}</div><div class="snote">이란 리스크로 $100 상회</div></div>`+
       (MACRO.btc?`<div class="stat"><div class="slab">비트코인 (BTC)</div><div class="sval">$${MACRO.btc.toLocaleString()}</div><div class="snote">${pct(MACRO.btcR)} 전일대비 · Yahoo</div></div>`:'')+
-      `<div class="stat"><div class="slab">투자자 수급(현물+선물)</div><div class="sval" style="font-size:13px;color:#1a7f37">연동됨 ✓</div><div class="snote">아래 '투자자별 순매수' 카드 참조</div></div>`+
     `</div>`+
     `<div class="disc">※ 지수=다음금융(KRX 확정) · 환율·금리·유가=시장데이터(${MACRO.asofUS}). 참고용 지표.</div>`;
 })();
 
 // ── 유동성·3저 환경 (자동) — inv 카드 미니박스 + 아래 liq 카드에서 공용 ──
-const LIQ = {"asof": "2026-11-06", "dxy": {"v": 102.28, "chg": 2.5}, "tnx": {"v": 4.86, "chg": 4.0}, "wti": {"v": 90.83, "chg": 10.6}, "btc": {"v": 75816, "chg": 16.8}};
+const LIQ = {"asof": "2026-11-06", "dxy": {"v": 102.28, "chg": 2.5}, "tnx": {"v": 4.86, "chg": 4.0}, "wti": {"v": 90.83, "chg": 10.6}, "btc": {"v": 75815, "chg": 16.8}};
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
 const INV = {"kospi": {"f": -26892, "i": 17092, "p": 5211}, "kosdaq": {"f": -940, "i": 2112, "p": -1222}, "asof": "2026-11-06", "fut": {"f": 14036, "i": -9374, "p": -3680, "fc": 7171, "ic": -4789, "pc": -1880, "asof": "2026-11-06", "name": "F 202612"}};
