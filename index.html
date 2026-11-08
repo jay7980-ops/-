@@ -104,7 +104,7 @@ const WAR = {
 })();
 
 // ── 매크로 지표: 지수·환율·국채금리·유가 (상단) ──
-const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -5.03, "usdkrw": 1357, "tnx": 4.84, "tnxHi": 5.36, "wti": 90.5, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.06", "asofUS": "2026.11.06", "btc": 75804, "btcR": 0.07};
+const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -5.03, "usdkrw": 1357, "tnx": 4.84, "tnxHi": 5.36, "wti": 90.5, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.06", "asofUS": "2026.11.06", "btc": 75827, "btcR": 0.1};
 (function(){
   const pct=r=>`<span style="color:${r>0?'#d6213a':(r<0?'#0969da':'#656d76')}">${r>0?'+':''}${r.toFixed(2)}%</span>`;
   document.getElementById('macro').innerHTML =
@@ -121,7 +121,7 @@ const MACRO = {"kospi": 5059.69, "kospiR": -6.02, "kosdaq": 644.27, "kosdaqR": -
 })();
 
 // ── 유동성·3저 환경 (자동) — inv 카드 미니박스 + 아래 liq 카드에서 공용 ──
-const LIQ = {"asof": "2026-11-06", "dxy": {"v": 102.28, "chg": 2.5}, "tnx": {"v": 4.86, "chg": 4.0}, "wti": {"v": 90.83, "chg": 10.6}, "btc": {"v": 75815, "chg": 16.8}};
+const LIQ = {"asof": "2026-11-06", "dxy": {"v": 102.28, "chg": 2.5}, "tnx": {"v": 4.86, "chg": 4.0}, "wti": {"v": 90.83, "chg": 10.6}, "btc": {"v": 75851, "chg": 16.9}};
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
 const INV = {"kospi": {"f": -26892, "i": 17092, "p": 5211}, "kosdaq": {"f": -940, "i": 2112, "p": -1222}, "asof": "2026-11-06", "fut": {"f": 14036, "i": -9374, "p": -3680, "fc": 7171, "ic": -4789, "pc": -1880, "asof": "2026-11-06", "name": "F 202612"}};
@@ -141,22 +141,9 @@ const INV = {"kospi": {"f": -26892, "i": 17092, "p": 5211}, "kosdaq": {"f": -940
       `기관 <b style="color:${col(o.i)}">${sg(o.i)}</b><br>`+
       `개인 <b style="color:${col(o.p)}">${sg(o.p)}</b></div>`+
       `<div style="font-size:9px;color:#8c959f;margin-top:3px">환산 · 외${(o.fc||0).toLocaleString()}/기${(o.ic||0).toLocaleString()}/개${(o.pc||0).toLocaleString()}계약</div></div>` : '';
-  const boxLiq = () => {
-    if(!LIQ || !LIQ.dxy) return '';
-    const fac=[['달러',LIQ.dxy.chg],['금리',LIQ.tnx.chg],['유가',LIQ.wti.chg]];
-    let sc=0; fac.forEach(f=>{ if(f[1]<0) sc++; });
-    const lab = sc===3?['🟢','완화(3저 성립)']:sc===2?['🟡','중립~완화']:sc===1?['🟠','중립~긴축']:['🔴','긴축·역풍'];
-    const line = fac.map(f=>`${f[0]} <b style="color:${f[1]<0?'#1a7f37':'#d6213a'}">${f[1]<0?'↓':'↑'}</b>`).join(' · ');
-    return `<div class="stat"><div class="slab">유동성·3저 환경</div>`+
-      `<div class="snote" style="font-size:12.5px;line-height:1.7;color:#1f2328">`+
-      `${lab[0]} <b>${lab[1]}</b><br><span style="font-size:11.5px;color:#3d444d">${line} <span style="color:#8c959f">(3개월)</span></span>`+
-      (LIQ.btc?`<br><span style="font-size:11px;color:#656d76">BTC 3M <b style="color:${LIQ.btc.chg>=0?'#d6213a':'#0969da'}">${LIQ.btc.chg>0?'+':''}${LIQ.btc.chg}%</b></span>`:'')+
-      `</div></div>`;
-  };
   el.innerHTML =
     `<div class="ctitle">💵 투자자별 순매수 (현물+선물) <span style="font-weight:400;color:#8c959f;font-size:11px">· ${INV.asof}</span></div>`+
     `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">`+ box('코스피 (현물)', INV.kospi)+ box('코스닥 (현물)', INV.kosdaq)+ boxF(INV.fut)+ `</div>`+
-    (boxLiq()? `<div style="margin-top:7px">`+ boxLiq()+ `</div>` : '')+
     `<div class="disc">※ 현물=순매수 거래대금(억·pykrx/KRX) · 선물=코스피200 근월물 순매수 환산 억원(계약×종가×25만승수·다음금융). 실데이터.</div>`;
 })();
 
