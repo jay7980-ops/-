@@ -101,6 +101,8 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
 
 <div id="tab-jb" style="display:none">
   <div class="updnote">🔴 AI 추천 오후 4:10(16:10) · 수급 저녁 5시(17:00) 자동 갱신 · 당일 확정 수급 기준</div>
+  <div class="card" id="regime"></div>
+  <div class="card" id="riseup"></div>
   <div class="card" id="jbai"></div>
   <div class="card" id="jbguide"></div>
   <div class="card" id="jbtheme"></div>
@@ -134,7 +136,7 @@ const WAR = {
 })();
 
 // ── 매크로 지표: 지수·환율·국채금리·유가 (상단) ──
-const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.48, "usdkrw": 1340, "tnx": 4.86, "tnxHi": 5.36, "wti": 86.8, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.10", "asofUS": "2026.11.10", "btc": 74480, "btcR": -1.03};
+const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.48, "usdkrw": 1340, "tnx": 4.86, "tnxHi": 5.36, "wti": 86.8, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.10", "asofUS": "2026.11.10", "btc": 73800, "btcR": -1.93};
 (function(){
   const pct=r=>`<span style="color:${r>0?'#d6213a':(r<0?'#0969da':'#656d76')}">${r>0?'+':''}${r.toFixed(2)}%</span>`;
   document.getElementById('macro').innerHTML =
@@ -151,7 +153,7 @@ const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.
 })();
 
 // ── 유동성·3저 환경 (자동) — inv 카드 미니박스 + 아래 liq 카드에서 공용 ──
-const LIQ = {"asof": "2026-11-10", "dxy": {"v": 102.09, "chg": 2.3}, "tnx": {"v": 4.99, "chg": 6.2}, "wti": {"v": 85.66, "chg": 4.3}, "btc": {"v": 74451, "chg": 16.5}};
+const LIQ = {"asof": "2026-11-10", "dxy": {"v": 102.25, "chg": 2.4}, "tnx": {"v": 4.98, "chg": 6.0}, "wti": {"v": 86.48, "chg": 5.3}, "btc": {"v": 73799, "chg": 15.5}};
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
 const INV = {"kospi": {"f": 4439, "i": 4642, "p": -13947}, "kosdaq": {"f": -1474, "i": 2147, "p": -567}, "asof": "2026-11-10", "fut": {"f": -294, "i": 1657, "p": -1238, "fc": -145, "ic": 816, "pc": -610, "asof": "2026-11-10", "name": "F 202612"}};
@@ -216,7 +218,7 @@ const STABLE = {asof:'2026-11-08', items:[
 })();
 
 // ── 자금 흐름 (자동) · 🇰🇷 실제 순매수 억원 / 🇺🇸 섹터 상대강도 프록시 ──
-const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "반도체", "a": 4097}, {"s": "2차전지", "a": 2225}, {"s": "전력/원전", "a": 950}, {"s": "인터넷/엔터", "a": 772}, {"s": "바이오/제약", "a": 741}, {"s": "조선/방산", "a": 633}, {"s": "금융", "a": 470}, {"s": "건설/기계", "a": 432}, {"s": "자동차", "a": 247}], "us": [{"s": "기술", "t": "XLK", "d1": -0.26, "m1": -13.2}, {"s": "금융", "t": "XLF", "d1": -0.08, "m1": 5.3}, {"s": "에너지", "t": "XLE", "d1": -0.1, "m1": -6.3}, {"s": "헬스케어", "t": "XLV", "d1": -0.48, "m1": 9.0}, {"s": "경기소비재", "t": "XLY", "d1": -0.19, "m1": 7.6}, {"s": "필수소비", "t": "XLP", "d1": -0.65, "m1": 7.0}, {"s": "산업재", "t": "XLI", "d1": -0.63, "m1": -0.8}, {"s": "소재", "t": "XLB", "d1": -0.74, "m1": 6.3}, {"s": "유틸리티", "t": "XLU", "d1": -0.75, "m1": 4.4}, {"s": "부동산", "t": "XLRE", "d1": -0.82, "m1": 5.6}, {"s": "커뮤니케이션", "t": "XLC", "d1": -0.12, "m1": -3.8}]};
+const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "반도체", "a": 4097}, {"s": "2차전지", "a": 2225}, {"s": "전력/원전", "a": 950}, {"s": "인터넷/엔터", "a": 772}, {"s": "바이오/제약", "a": 741}, {"s": "조선/방산", "a": 633}, {"s": "금융", "a": 470}, {"s": "건설/기계", "a": 432}, {"s": "자동차", "a": 247}], "us": [{"s": "기술", "t": "XLK", "d1": -1.15, "m1": -14.0}, {"s": "금융", "t": "XLF", "d1": 0.52, "m1": 5.9}, {"s": "에너지", "t": "XLE", "d1": 0.44, "m1": -5.8}, {"s": "헬스케어", "t": "XLV", "d1": 0.29, "m1": 9.8}, {"s": "경기소비재", "t": "XLY", "d1": 0.03, "m1": 7.8}, {"s": "필수소비", "t": "XLP", "d1": 0.15, "m1": 7.8}, {"s": "산업재", "t": "XLI", "d1": -0.09, "m1": -0.2}, {"s": "소재", "t": "XLB", "d1": -0.17, "m1": 6.9}, {"s": "유틸리티", "t": "XLU", "d1": -0.14, "m1": 5.0}, {"s": "부동산", "t": "XLRE", "d1": -0.13, "m1": 6.3}, {"s": "커뮤니케이션", "t": "XLC", "d1": 0.37, "m1": -3.3}]};
 (function(){
   const won = v => (v>0?'+':'')+v.toLocaleString()+'억';
   const kin = (FLOW.kr||[]).filter(x=>x.a>0).slice(0,7);
@@ -263,7 +265,7 @@ const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "�
 })();
 
 // ── 투자 시즌 시계 & KRE 신용위기 게이지 (정보용, 매매권유 아님) ──
-const KRE = {"px": 72.95, "ma200": 71.28, "hi52": 77.93, "ddHi": -6.4, "vsMa": 2.3, "asof": "2026-11-10"};
+const KRE = {"px": 73.09, "ma200": 71.29, "hi52": 77.93, "ddHi": -6.2, "vsMa": 2.5, "asof": "2026-11-10"};
 function modCard(id,icon,title,badge,badgeCls,txt,extra){
   document.getElementById(id).innerHTML =
     `<div class="ctitle">${icon} ${title}</div>`+
@@ -390,7 +392,7 @@ const CAL = [
   document.getElementById('cal').innerHTML=h;
 })();
 // ── AI 레버리지 신용 리스크 게이지 (자동) — 금리↑ + 하이일드 + AI인프라 주가 복합 프록시 ──
-const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.99, "chg": 6.2}, "hyg": {"v": 77.21, "chg": -2.9}, "lqd": {"v": 103.8, "chg": -2.0}, "basket": [{"s": "CoreWeave", "t": "CRWV", "chg": -42.7}, {"s": "Nebius", "t": "NBIS", "chg": -22.2}, {"s": "Oracle", "t": "ORCL", "chg": -20.5}, {"s": "Vertiv", "t": "VRT", "chg": -26.9}, {"s": "Applied Digital", "t": "APLD", "chg": -40.7}, {"s": "Digital Realty", "t": "DLR", "chg": -4.4}]};
+const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.98, "chg": 6.0}, "hyg": {"v": 77.18, "chg": -2.9}, "lqd": {"v": 103.88, "chg": -2.0}, "basket": [{"s": "CoreWeave", "t": "CRWV", "chg": -46.0}, {"s": "Nebius", "t": "NBIS", "chg": -30.7}, {"s": "Oracle", "t": "ORCL", "chg": -18.9}, {"s": "Vertiv", "t": "VRT", "chg": -31.1}, {"s": "Applied Digital", "t": "APLD", "chg": -43.8}, {"s": "Digital Realty", "t": "DLR", "chg": -5.2}]};
 (function(){
   const el=document.getElementById('aicr');
   if(!AICR || !AICR.hyg){ if(el) el.style.display='none'; return; }
@@ -420,7 +422,7 @@ const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.99, "chg": 6.2}, "hyg": {"v":
     `<div class="disc">시장가격 기반 복합 리스크 프록시(금리↑·하이일드ETF·AI인프라 주가). 실제 부도·신용스프레드 지표가 아니며 신용위기를 예측하지 않음 — 스트레스 '모니터링'용. 매매권유 아님.</div>`;
 })();
 // ── 미국 증시 마감 (자동) — 3대 지수 + VIX + 미국 매크로 요약 ──
-const USIDX = {"asof": "2026-11-10", "sp": {"v": 7528.35, "r": -0.29}, "nq": {"v": 25208.34, "r": -0.18}, "dow": {"v": 52171.47, "r": -0.42}, "vix": {"v": 19.96, "r": 0.2}};
+const USIDX = {"asof": "2026-11-10", "sp": {"v": 7520.93, "r": -0.38}, "nq": {"v": 25065.88, "r": -0.74}, "dow": {"v": 52231.89, "r": -0.3}, "vix": {"v": 19.46, "r": -2.31}};
 (function(){
   const el=document.getElementById('usidx'); if(!el) return;
   if(!USIDX || !USIDX.sp){ el.style.display='none'; return; }
@@ -494,6 +496,53 @@ const THEME = {asof:'2026-11-10', name:'데이터센터 반사이익',
     `</div>`+
     `<div style="margin-top:8px"><a href="${THEME.src}" target="_blank" rel="noopener" style="font-size:11px;color:#0969da">관련 기사 🔗</a></div>`+
     `<div class="disc">뉴스 기반 주도섹터 참고(주기적 수동 갱신) · J 5필터의 '주도섹터·뉴스·연속성' 확인용 · 수급은 아래 후보에서 교차확인 · 매매권유 아님.</div>`;
+})();
+
+// ── 📊 코스피 국면 & 종베 전략 (자동) — 20/60일선 정·역배열 ──
+const REGIME = {"asof": "2026-11-10", "px": 5239.13, "ma20": 5642.48, "ma60": 6418.78, "reg": "하락"};
+(function(){
+  const el=document.getElementById('regime'); if(!el) return;
+  if(!REGIME || !REGIME.reg){ el.innerHTML=`<div class="ctitle">📊 코스피 국면 & 종베 전략</div><div class="mtxt" style="margin-top:4px;color:#8c959f">갱신 대기 — 장 마감 후 자동 판단됩니다.</div>`; return; }
+  const R=REGIME.reg;
+  const map={
+    '상승':['🟢 상승장 (정배열)','g-on','<b>지수 견인 대형주 우선</b> — 반도체(삼성전자·SK하이닉스) 등 지수를 끌어올리는 주도 대형주가 종베 최적. 지수 모멘텀을 탄다.'],
+    '하락':['🔴 하락장 (역배열)','g-red','<b>재료 있는 개별 종목 우선 + 비중 축소</b> — 지수가 안 받쳐주니 대형주 추격보다 확실한 촉매(뉴스)주 선별. 리스크 관리 우선.'],
+    '박스권':['🟡 박스권','g-mid','<b>개별 재료주 우선</b> — 지수가 안 오르는 구간엔 지수 견인주보다 재료 있는 개별 테마·이슈주의 상승률이 더 높다.']
+  };
+  const m=map[R]||map['박스권'];
+  const pos = REGIME.px>=REGIME.ma20?'#d6213a':'#0969da';
+  el.innerHTML =
+    `<div class="ctitle">📊 코스피 국면 & 종베 전략 <span style="font-weight:400;color:#8c959f;font-size:11px">· ${REGIME.asof}</span></div>`+
+    `<div class="mod" style="margin:4px 0 6px"><span class="badge ${m[1]}">${m[0]}</span><div class="mtxt">${m[2]}</div></div>`+
+    `<div class="mtxt" style="font-size:11.5px;color:#656d76">코스피 <b style="color:${pos}">${REGIME.px.toLocaleString()}</b> · 20일선 ${REGIME.ma20.toLocaleString()} · 60일선 ${REGIME.ma60.toLocaleString()}</div>`+
+    `<div class="disc">코스피 20/60일 이동평균 배열로 국면 자동 판단(참고용). 종목 성격 선택 가이드일 뿐 매매권유 아님.</div>`;
+})();
+
+// ── 🎲 익일 상승 우호 스코어 (자동) — 강3·중2·약1 가중 ──
+const RISEUP = {"asof": "2026-11-10", "items": [{"k": "외국인 지수선물 순매수", "g": "강", "ok": false, "note": "-294억"}, {"k": "외국인 현물 순매수", "g": "강", "ok": true, "note": "+4439억"}, {"k": "미국 나스닥 상승", "g": "강", "ok": false, "note": "-0.74%"}, {"k": "반도체 SOX 상승", "g": "강", "ok": false, "note": "-0.35%"}, {"k": "기관 현물 순매수", "g": "중", "ok": true, "note": "+4642억"}, {"k": "원/달러 환율 하락", "g": "중", "ok": false, "note": "1343 (+0.21%)"}, {"k": "VIX 하락", "g": "중", "ok": true, "note": "19.5 (-2.31%)"}, {"k": "달러인덱스 하락", "g": "중", "ok": false, "note": "102.25 (+0.59%)"}, {"k": "미 10년물 금리 하락", "g": "약", "ok": false, "note": "4.98% (+2.45%)"}, {"k": "WTI 유가 하락", "g": "약", "ok": true, "note": "$86.5 (-0.46%)"}]};
+(function(){
+  const el=document.getElementById('riseup'); if(!el) return;
+  const it=RISEUP.items||[];
+  if(!it.length){ el.innerHTML=`<div class="ctitle">🎲 익일 상승 우호 스코어</div><div class="mtxt" style="margin-top:4px;color:#8c959f">갱신 대기 — 매 평일 장 마감 후 자동 계산됩니다.</div>`; return; }
+  const W={'강':3,'중':2,'약':1};
+  let num=0,den=0; it.forEach(m=>{den+=W[m.g]||1; if(m.ok)num+=W[m.g]||1;});
+  const pct=den?Math.round(num/den*100):0;
+  const G = pct>=70?['🟢 우호(강)','g-on']:pct>=50?['🟡 중립~우호','g-mid']:pct>=30?['🟠 혼조','g-off']:['🔴 비우호','g-red'];
+  const cnt=g=>{const a=it.filter(m=>m.g===g);return a.filter(m=>m.ok).length+'/'+a.length;};
+  let rows='';
+  ['강','중','약'].forEach(g=>{
+    it.filter(m=>m.g===g).forEach(m=>{
+      const gc=g==='강'?'#d6213a':(g==='중'?'#e36209':'#8c959f');
+      rows+=`<div style="display:flex;align-items:center;gap:7px;margin:2px 0"><span style="font-size:9px;color:#fff;background:${gc};border-radius:4px;padding:0 5px">${g}</span>`+
+        `<span style="font-size:11.5px;color:${m.ok?'#1a7f37':'#656d76'};flex:1">${m.ok?'✅':'⚠️'} ${m.k}</span>`+
+        `<span style="font-size:10.5px;color:#8c959f;font-variant-numeric:tabular-nums">${m.note||''}</span></div>`;
+    });
+  });
+  el.innerHTML =
+    `<div class="ctitle">🎲 익일 상승 우호 스코어 <span style="font-weight:400;color:#8c959f;font-size:11px">· ${RISEUP.asof}</span></div>`+
+    `<div class="mod" style="margin:4px 0 6px"><span class="badge ${G[1]}">${G[0]} ${pct}%</span><div class="mtxt">강 ${cnt('강')} · 중 ${cnt('중')} · 약 ${cnt('약')} 충족</div></div>`+
+    rows+
+    `<div class="disc">전일 수급(외인 선물·현물)·미국장(나스닥·SOX)·환율·VIX·달러·금리·유가로 익일 코스피 상승 '확률 기울기'를 가중 집계(강3·중2·약1). 보장이 아니며 단일 지표 베팅 금지 · 매매권유 아님.</div>`;
 })();
 
 // ── 🤖 AI 종베 추천 (매 평일 16:10 AI 예약작업이 AIJB 교체) ──
