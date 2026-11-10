@@ -121,7 +121,7 @@ const WAR = {
 })();
 
 // ── 매크로 지표: 지수·환율·국채금리·유가 (상단) ──
-const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.48, "usdkrw": 1340, "tnx": 4.86, "tnxHi": 5.36, "wti": 86.8, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.10", "asofUS": "2026.11.10", "btc": 74245, "btcR": -1.34};
+const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.48, "usdkrw": 1340, "tnx": 4.86, "tnxHi": 5.36, "wti": 86.8, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.10", "asofUS": "2026.11.10", "btc": 74274, "btcR": -1.3};
 (function(){
   const pct=r=>`<span style="color:${r>0?'#d6213a':(r<0?'#0969da':'#656d76')}">${r>0?'+':''}${r.toFixed(2)}%</span>`;
   document.getElementById('macro').innerHTML =
@@ -138,7 +138,7 @@ const MACRO = {"kospi": 5239.13, "kospiR": 4.39, "kosdaq": 667.61, "kosdaqR": 4.
 })();
 
 // ── 유동성·3저 환경 (자동) — inv 카드 미니박스 + 아래 liq 카드에서 공용 ──
-const LIQ = {"asof": "2026-11-10", "dxy": {"v": 102.08, "chg": 2.3}, "tnx": {"v": 4.98, "chg": 6.0}, "wti": {"v": 85.3, "chg": 3.9}, "btc": {"v": 74167, "chg": 16.0}};
+const LIQ = {"asof": "2026-11-10", "dxy": {"v": 102.08, "chg": 2.3}, "tnx": {"v": 4.99, "chg": 6.2}, "wti": {"v": 85.2, "chg": 3.7}, "btc": {"v": 74284, "chg": 16.2}};
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
 const INV = {"kospi": {"f": 4439, "i": 4642, "p": -13947}, "kosdaq": {"f": -1474, "i": 2147, "p": -567}, "asof": "2026-11-10", "fut": {"f": -294, "i": 1657, "p": -1238, "fc": -145, "ic": 816, "pc": -610, "asof": "2026-11-10", "name": "F 202612"}};
@@ -203,7 +203,7 @@ const STABLE = {asof:'2026-11-08', items:[
 })();
 
 // ── 자금 흐름 (자동) · 🇰🇷 실제 순매수 억원 / 🇺🇸 섹터 상대강도 프록시 ──
-const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "반도체", "a": 4097}, {"s": "2차전지", "a": 2225}, {"s": "전력/원전", "a": 950}, {"s": "인터넷/엔터", "a": 772}, {"s": "바이오/제약", "a": 741}, {"s": "조선/방산", "a": 633}, {"s": "금융", "a": 470}, {"s": "건설/기계", "a": 432}, {"s": "자동차", "a": 247}], "us": [{"s": "기술", "t": "XLK", "d1": -0.4, "m1": -13.3}, {"s": "금융", "t": "XLF", "d1": -0.03, "m1": 5.3}, {"s": "에너지", "t": "XLE", "d1": -0.23, "m1": -6.4}, {"s": "헬스케어", "t": "XLV", "d1": -0.67, "m1": 8.8}, {"s": "경기소비재", "t": "XLY", "d1": -0.52, "m1": 7.2}, {"s": "필수소비", "t": "XLP", "d1": -0.6, "m1": 7.0}, {"s": "산업재", "t": "XLI", "d1": -0.87, "m1": -1.0}, {"s": "소재", "t": "XLB", "d1": -0.95, "m1": 6.1}, {"s": "유틸리티", "t": "XLU", "d1": -0.82, "m1": 4.3}, {"s": "부동산", "t": "XLRE", "d1": -1.01, "m1": 5.4}, {"s": "커뮤니케이션", "t": "XLC", "d1": -0.42, "m1": -4.1}]};
+const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "반도체", "a": 4097}, {"s": "2차전지", "a": 2225}, {"s": "전력/원전", "a": 950}, {"s": "인터넷/엔터", "a": 772}, {"s": "바이오/제약", "a": 741}, {"s": "조선/방산", "a": 633}, {"s": "금융", "a": 470}, {"s": "건설/기계", "a": 432}, {"s": "자동차", "a": 247}], "us": [{"s": "기술", "t": "XLK", "d1": -0.03, "m1": -13.0}, {"s": "금융", "t": "XLF", "d1": -0.07, "m1": 5.3}, {"s": "에너지", "t": "XLE", "d1": -0.01, "m1": -6.2}, {"s": "헬스케어", "t": "XLV", "d1": -0.63, "m1": 8.8}, {"s": "경기소비재", "t": "XLY", "d1": -0.59, "m1": 7.2}, {"s": "필수소비", "t": "XLP", "d1": -0.69, "m1": 6.9}, {"s": "산업재", "t": "XLI", "d1": -0.76, "m1": -0.9}, {"s": "소재", "t": "XLB", "d1": -0.88, "m1": 6.1}, {"s": "유틸리티", "t": "XLU", "d1": -0.89, "m1": 4.3}, {"s": "부동산", "t": "XLRE", "d1": -1.03, "m1": 5.4}, {"s": "커뮤니케이션", "t": "XLC", "d1": -0.42, "m1": -4.1}]};
 (function(){
   const won = v => (v>0?'+':'')+v.toLocaleString()+'억';
   const kin = (FLOW.kr||[]).filter(x=>x.a>0).slice(0,7);
@@ -250,7 +250,7 @@ const FLOW = {"asof": "2026-11-10", "kr": [{"s": "기타", "a": 9060}, {"s": "�
 })();
 
 // ── 투자 시즌 시계 & KRE 신용위기 게이지 (정보용, 매매권유 아님) ──
-const KRE = {"px": 72.97, "ma200": 71.28, "hi52": 77.93, "ddHi": -6.4, "vsMa": 2.4, "asof": "2026-11-10"};
+const KRE = {"px": 73.11, "ma200": 71.29, "hi52": 77.93, "ddHi": -6.2, "vsMa": 2.6, "asof": "2026-11-10"};
 function modCard(id,icon,title,badge,badgeCls,txt,extra){
   document.getElementById(id).innerHTML =
     `<div class="ctitle">${icon} ${title}</div>`+
@@ -377,7 +377,7 @@ const CAL = [
   document.getElementById('cal').innerHTML=h;
 })();
 // ── AI 레버리지 신용 리스크 게이지 (자동) — 금리↑ + 하이일드 + AI인프라 주가 복합 프록시 ──
-const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.98, "chg": 6.0}, "hyg": {"v": 77.2, "chg": -2.9}, "lqd": {"v": 103.75, "chg": -2.1}, "basket": [{"s": "CoreWeave", "t": "CRWV", "chg": -43.6}, {"s": "Nebius", "t": "NBIS", "chg": -22.2}, {"s": "Oracle", "t": "ORCL", "chg": -21.2}, {"s": "Vertiv", "t": "VRT", "chg": -26.7}, {"s": "Applied Digital", "t": "APLD", "chg": -41.7}, {"s": "Digital Realty", "t": "DLR", "chg": -5.0}]};
+const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.99, "chg": 6.1}, "hyg": {"v": 77.22, "chg": -2.8}, "lqd": {"v": 103.81, "chg": -2.0}, "basket": [{"s": "CoreWeave", "t": "CRWV", "chg": -43.4}, {"s": "Nebius", "t": "NBIS", "chg": -21.9}, {"s": "Oracle", "t": "ORCL", "chg": -21.0}, {"s": "Vertiv", "t": "VRT", "chg": -26.8}, {"s": "Applied Digital", "t": "APLD", "chg": -41.5}, {"s": "Digital Realty", "t": "DLR", "chg": -4.9}]};
 (function(){
   const el=document.getElementById('aicr');
   if(!AICR || !AICR.hyg){ if(el) el.style.display='none'; return; }
@@ -407,7 +407,7 @@ const AICR = {"asof": "2026-11-10", "tnx": {"v": 4.98, "chg": 6.0}, "hyg": {"v":
     `<div class="disc">시장가격 기반 복합 리스크 프록시(금리↑·하이일드ETF·AI인프라 주가). 실제 부도·신용스프레드 지표가 아니며 신용위기를 예측하지 않음 — 스트레스 '모니터링'용. 매매권유 아님.</div>`;
 })();
 // ── 미국 증시 마감 (자동) — 3대 지수 + VIX + 미국 매크로 요약 ──
-const USIDX = {"asof": "2026-11-10", "sp": {"v": 7519.85, "r": -0.4}, "nq": {"v": 25179.13, "r": -0.29}, "dow": {"v": 52115.81, "r": -0.52}, "vix": {"v": 20.98, "r": 5.32}};
+const USIDX = {"asof": "2026-11-10", "sp": {"v": 7527.51, "r": -0.3}, "nq": {"v": 25214.77, "r": -0.15}, "dow": {"v": 52164.57, "r": -0.43}, "vix": {"v": 20.69, "r": 3.87}};
 (function(){
   const el=document.getElementById('usidx'); if(!el) return;
   if(!USIDX || !USIDX.sp){ el.style.display='none'; return; }
