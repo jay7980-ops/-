@@ -136,7 +136,7 @@ const WAR = {
 })();
 
 // ── 매크로 지표: 지수·환율·국채금리·유가 (상단) ──
-const MACRO = {"kospi": 5375.36, "kospiR": 2.6, "kosdaq": 705.1, "kosdaqR": 5.62, "usdkrw": 1342, "tnx": 4.98, "tnxHi": 5.36, "wti": 86.0, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.11", "asofUS": "2026.11.11", "btc": 73774, "btcR": 0.09};
+const MACRO = {"kospi": 5375.36, "kospiR": 2.6, "kosdaq": 705.1, "kosdaqR": 5.62, "usdkrw": 1342, "tnx": 4.98, "tnxHi": 5.36, "wti": 86.0, "wtiLo": 54.98, "wtiHi": 119.48, "asofKR": "2026.11.11", "asofUS": "2026.11.11", "btc": 73770, "btcR": 0.08};
 (function(){
   const pct=r=>`<span style="color:${r>0?'#d6213a':(r<0?'#0969da':'#656d76')}">${r>0?'+':''}${r.toFixed(2)}%</span>`;
   document.getElementById('macro').innerHTML =
@@ -153,7 +153,7 @@ const MACRO = {"kospi": 5375.36, "kospiR": 2.6, "kosdaq": 705.1, "kosdaqR": 5.62
 })();
 
 // ── 유동성·3저 환경 (자동) — inv 카드 미니박스 + 아래 liq 카드에서 공용 ──
-const LIQ = {"asof": "2026-11-11", "dxy": {"v": 102.75, "chg": 2.9}, "tnx": {"v": 5.0, "chg": 6.7}, "wti": {"v": 87.29, "chg": 4.9}, "btc": {"v": 73792, "chg": 16.1}};
+const LIQ = {"asof": "2026-11-11", "dxy": {"v": 102.77, "chg": 3.0}, "tnx": {"v": 5.0, "chg": 6.7}, "wti": {"v": 87.01, "chg": 4.6}, "btc": {"v": 73752, "chg": 16.0}};
 
 // ── 투자자별 순매수 (현물 집계) · pykrx(KRX) 실데이터 ──
 const INV = {"kospi": {"f": 6729, "i": -5034, "p": -7145}, "kosdaq": {"f": -1354, "i": 3130, "p": -1838}, "asof": "2026-11-11", "fut": {"f": -7958, "i": 6257, "p": 1326, "fc": -3805, "ic": 2992, "pc": 634, "asof": "2026-11-11", "name": "F 202612"}};
@@ -425,7 +425,7 @@ const AICR = {"asof": "2026-11-11", "tnx": {"v": 5.0, "chg": 6.7}, "hyg": {"v": 
     `<div class="disc">시장가격 기반 복합 리스크 프록시(금리↑·하이일드ETF·AI인프라 주가). 실제 부도·신용스프레드 지표가 아니며 신용위기를 예측하지 않음 — 스트레스 '모니터링'용. 매매권유 아님.</div>`;
 })();
 // ── 미국 증시 마감 (자동) — 3대 지수 + VIX + 미국 매크로 요약 ──
-const USIDX = {"asof": "2026-11-11", "sp": {"v": 7520.93, "r": -0.38}, "nq": {"v": 25065.88, "r": -0.74}, "dow": {"v": 52231.89, "r": -0.3}, "vix": {"v": 18.36, "r": -5.65}};
+const USIDX = {"asof": "2026-11-11", "sp": {"v": 7520.93, "r": -0.38}, "nq": {"v": 25065.88, "r": -0.74}, "dow": {"v": 52231.89, "r": -0.3}, "vix": {"v": 18.33, "r": -5.81}};
 (function(){
   const el=document.getElementById('usidx'); if(!el) return;
   if(!USIDX || !USIDX.sp){ el.style.display='none'; return; }
@@ -522,7 +522,7 @@ const REGIME = {"asof": "2026-11-11", "px": 5375.36, "ma20": 5570.99, "ma60": 63
 })();
 
 // ── 🎲 익일 상승 우호 스코어 (자동) — 강3·중2·약1 가중 ──
-const RISEUP = {"asof": "2026-11-11", "items": [{"k": "외국인 지수선물 순매수", "g": "강", "ok": false, "note": "-7958억"}, {"k": "외국인 현물 순매수", "g": "강", "ok": true, "note": "+6729억"}, {"k": "미국 나스닥 상승", "g": "강", "ok": false, "note": "-0.74%"}, {"k": "반도체 SOX 상승", "g": "강", "ok": false, "note": "-0.35%"}, {"k": "기관 현물 순매수", "g": "중", "ok": false, "note": "-5034억"}, {"k": "원/달러 환율 하락", "g": "중", "ok": true, "note": "1336 (-0.49%)"}, {"k": "VIX 하락", "g": "중", "ok": true, "note": "18.4 (-5.65%)"}, {"k": "달러인덱스 하락", "g": "중", "ok": false, "note": "102.75 (+0.51%)"}, {"k": "미 10년물 금리 하락", "g": "약", "ok": false, "note": "5.00% (+0.30%)"}, {"k": "WTI 유가 하락", "g": "약", "ok": false, "note": "$87.3 (+1.43%)"}]};
+const RISEUP = {"asof": "2026-11-11", "items": [{"k": "외국인 지수선물 순매수", "g": "강", "ok": false, "note": "-7958억"}, {"k": "외국인 현물 순매수", "g": "강", "ok": true, "note": "+6729억"}, {"k": "미국 나스닥 상승", "g": "강", "ok": false, "note": "-0.74%"}, {"k": "반도체 SOX 상승", "g": "강", "ok": false, "note": "-0.35%"}, {"k": "기관 현물 순매수", "g": "중", "ok": false, "note": "-5034억"}, {"k": "원/달러 환율 하락", "g": "중", "ok": true, "note": "1336 (-0.46%)"}, {"k": "VIX 하락", "g": "중", "ok": true, "note": "18.3 (-5.81%)"}, {"k": "달러인덱스 하락", "g": "중", "ok": false, "note": "102.77 (+0.53%)"}, {"k": "미 10년물 금리 하락", "g": "약", "ok": false, "note": "5.00% (+0.30%)"}, {"k": "WTI 유가 하락", "g": "약", "ok": false, "note": "$87.0 (+1.15%)"}]};
 (function(){
   const el=document.getElementById('riseup'); if(!el) return;
   const it=RISEUP.items||[];
