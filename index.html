@@ -54,7 +54,9 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
 .news b{color:#1f2328}
 .war{background:#fdecec;border:1px solid #e5484d;border-radius:12px}
 .war .ctitle{color:#b4232a}
-.tabs{display:flex;gap:8px;margin:14px 0 8px}
+.tabs{display:flex;gap:6px;margin:14px 0 8px}
+@media(max-width:480px){.tab{white-space:nowrap;padding:12px 4px!important;font-size:11.5px!important;letter-spacing:-.3px}}
+.tab{white-space:nowrap}
 .tab{flex:1;padding:12px 8px;border-radius:12px;border:1px solid #cdd5df;
   background:linear-gradient(#ffffff,#e7ecf1);color:#4a5560;font-size:12.5px;font-weight:800;cursor:pointer;
   box-shadow:0 3px 0 #c3ccd6, 0 4px 7px rgba(0,0,0,.14);
@@ -65,6 +67,16 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
   box-shadow:0 3px 0 #1551b0, 0 5px 11px rgba(31,111,235,.42)}
 .tab.on:active{transform:translateY(2px);box-shadow:0 1px 0 #1551b0, 0 2px 5px rgba(31,111,235,.42)}
 .updnote{color:#d6213a;font-size:11.5px;font-weight:700;margin:2px 2px 10px;display:flex;align-items:center;gap:5px}
+.lwt{width:100%;border-collapse:collapse;font-size:12.5px}
+.lwt th{background:#eef4ff;color:#1f2328;text-align:left;padding:6px 8px;border-bottom:1px solid #d0d7de}
+.lwt td{padding:6px 8px;border-bottom:1px solid #eaeef2;vertical-align:top;line-height:1.45}
+.lwt td:first-child{white-space:nowrap;font-weight:700;color:#3d444d;width:30%}
+.lwl{margin:0;padding-left:18px;font-size:12.5px;line-height:1.55;color:#3d444d}
+.lwl li{margin-bottom:5px}
+.exseg{display:flex;gap:6px;background:#eef1f4;border-radius:10px;padding:4px;margin-bottom:12px;overflow-x:auto}
+.exseg button{flex:0 0 auto;border:none;background:none;padding:8px 14px;font-size:13.5px;font-weight:700;color:#656d76;border-radius:8px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.exseg button.on{background:#fff;color:#1f2328;box-shadow:0 1px 3px rgba(31,35,40,.12)}
+.lwnote{font-size:11px;color:#8c959f;margin-top:8px}
 </style></head><body>
 <h1>📊 증시 마감 브리핑</h1>
 <div class="sub" id="sub">데이터 기준일 로딩…</div>
@@ -73,6 +85,7 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
   <button class="tab on" data-tab="kr">🇰🇷 국내 마감</button>
   <button class="tab" data-tab="us">🇺🇸 미국 마감</button>
   <button class="tab" data-tab="jb">🎯 종베 후보</button>
+  <button class="tab" data-tab="ex">🧠 전문가조언</button>
 </div>
 
 <div class="hint">💡 폰·PC 어디서든 열면 최근 저장된 브리핑을 볼 수 있어요. 매 거래일 종가 후 자동 갱신됩니다.</div>
@@ -115,6 +128,86 @@ h1{font-size:20px;font-weight:800;margin-bottom:2px}
   <div class="card" id="jblist"></div>
 </div>
 
+<div id="tab-ex" style="display:none">
+  <div class="exseg"><button data-ex="lw" class="on">📘 래리 윌리엄스</button></div>
+<div id="ex-lw">
+  <div class="updnote">📘 래리 윌리엄스 인터뷰 정리 (글로벌 초대석 1·2부, 미 중간선거 하루 전 녹화) · 수동 정리 2026-11-22</div>
+  <div class="card"><div class="ctitle"><span class="dot gdot"></span>👤 인터뷰 개요</div>
+    <div class="mtxt">래리 윌리엄스(84세), 약 65년 트레이딩 · Williams %R 개발자 · 1987 선물 트레이딩 월드컵(1만→최고 230만 달러).<br>
+    <b>1부</b> 코스피 급락 이유와 폭락장에서 투자금 지키기 · <b>2부</b> 직장인을 위한 현실적 투자 전략.<br>
+    <b>핵심</b>: 감정 대신 사이클·조건으로 판단 / 장기 추세는 상승 / 작게 베팅해 큰 추세를 잡아라 / 대부분은 가치주 인덱스 장기투자.</div>
+    <div class="lwnote">※ 인터뷰이 본인도 "틀릴 수 있다"고 한 개인 전망입니다. 매매권유 아님.</div></div>
+
+  <div class="card"><div class="ctitle"><span class="dot fdot"></span>🗓️ 사이클 전망 타임라인</div>
+    <table class="lwt"><tr><th>시점</th><th>전망</th></tr>
+    <tr><td>26.12 첫째 주<br>(12/7 전후)</td><td>코스피 <b>저점</b> 예상 · 숏 청산, 롱을 노릴 구간</td></tr>
+    <tr><td>26년 연말</td><td>단기적으로 연말까지 랠리, 시장은 여전히 긍정적</td></tr>
+    <tr><td>27.2 중순</td><td>12월 저점에서 시작된 랠리가 이어질 시점</td></tr>
+    <tr><td>27.3 중순</td><td>다시 <b>매수 신호</b> → 8월(가을)까지 상승</td></tr>
+    <tr><td>2027년</td><td>美 대통령 임기 3년 차 → 미국 증시 매우 긍정적. 단, 끝자리 7년(57·87·97·07)처럼 <b>연중 큰 조정</b> 가능</td></tr>
+    <tr><td>美 중간선거 후</td><td>선거는 강세 요인 · 적어도 27년 3월까지 랠리</td></tr>
+    <tr><td>28.1~2월</td><td>AI·빅테크 상승 흐름이 이어질 것으로 보는 시점</td></tr>
+    <tr><td>2028년</td><td>인플레 상승 사이클 지속 · <b>28년 말 강한 약세</b> 관점 예상</td></tr></table></div>
+
+  <div class="card"><div class="ctitle"><span class="dot fdot"></span>🇰🇷 한국 시장 진단</div>
+    <ul class="lwl">
+    <li>세계에서 가장 단순한 시장 중 하나. 주기성이 강하고 몇 가지 펀더멘털에 크게 좌우.</li>
+    <li><b>유가 선행</b>: 원유 고점 약 10주 뒤 코스피 고점. 원유 차트를 앞으로 옮겨 겹치면 고점·저점이 맞물림. (1부 "한 달 반~두 달", 2부 "3~6개월"로 다르게 언급)</li>
+    <li>장기 영향 요인: <b>미국 금리 · 금 · 원유</b>.</li>
+    <li>삼성전자·SK하이닉스 쏠림에도 사이클 분석은 통함(지수는 평균이라 더 쉬움). 두 종목에 뚜렷한 경고 신호 없음, 지금은 <b>저점 구간</b>.</li>
+    <li>한국 시장엔 매우 강한 <b>5년 주기</b>가 있었음.</li>
+    <li>인플레: 28년까지 지속. 연율 <b>약 5%</b>를 넘으면 주가에 진짜 문제.</li></ul></div>
+
+  <div class="card"><div class="ctitle"><span class="dot idot"></span>🤖 AI·빅테크 vs 닷컴 버블</div>
+    <ul class="lwl">
+    <li>흐름은 안 끝났고 28년 1~2월까지 갈 것. 핵심은 기업들이 실제로 돈을 번다는 점.</li>
+    <li>닷컴 때는 돈 버는 회사가 없었음 → 지금과 비교는 옳지 않음. 실적이 꺾이기 시작하면 그때가 문제.</li>
+    <li>65년간 큰 약세장은 8번 정도. 비관론자(달리오·해리 덴트)는 10~15년 틀렸다. 언론은 "피가 나야 1면".</li></ul></div>
+
+  <div class="card"><div class="ctitle"><span class="dot gdot"></span>🔍 종목 선정 기준</div>
+    <table class="lwt"><tr><th>기준</th><th>설명</th></tr>
+    <tr><td>낮은 부채</td><td>장기 성과가 더 좋음 (이자·원금부터 갚아야 하므로)</td></tr>
+    <tr><td>낮은 PER</td><td>이익 대비 주가가 낮은 종목</td></tr>
+    <tr><td>이익 증가</td><td>실적이 늘어나는 회사</td></tr>
+    <tr><td>세금 납부</td><td>사기 회사는 세금을 안 냈다 → 장부 조작 경고 신호</td></tr>
+    <tr><td>PSR(주가매출비율)</td><td>가장 중요한 펀더멘털 비율일 것</td></tr>
+    <tr><td>추세·주도주</td><td>엔비디아·코스트코처럼 지속력 있는 그날의 주도주</td></tr></table></div>
+
+  <div class="card"><div class="ctitle"><span class="dot fdot"></span>⏱️ 타이밍: '조건 트레이더'</div>
+    <ul class="lwl">
+    <li>"시장은 <b>조건</b> 때문에 움직인다. 차트는 과거만 보여준다." (멘토 빌 미한)</li>
+    <li>조건 = ① 측정 가능한 전문가 매수 ② 종목에 끌릴 다른 이유 ③ <b>계절성</b>(예: IBM 10/15~연말 강세)</li>
+    <li><b>핀치 포인트 지표</b>는 '매수 구간'만 알려줌 → <b>추세 전환</b> 확인 후 진입, 조건이 바뀔 때까지 보유.</li>
+    <li>美 <b>4년 주기 저점</b>(62·66·70·74·78·82…), <b>대통령 사이클</b>(예일 허시) 3년 차 상승.</li>
+    <li><b>패닉 지표</b>: 주요 바닥을 거의 일주일 안에 포착(2022 저점 포함). 극단적 공포는 4~5년에 한 번, 강한 상승 신호.</li></ul></div>
+
+  <div class="card"><div class="ctitle"><span class="dot gdot"></span>🚨 내일 20% 폭락한다면</div>
+    <div class="mod"><span class="badge g-on">현금 보유</span><div class="mtxt">살 준비. 주말까지도 20% 빠져 있으면 사기 시작.</div></div>
+    <div class="mod" style="margin-top:8px"><span class="badge g-mid">롱 보유</span><div class="mtxt">버텨라. 공포에 전부 파는 게 최악(코로나 저점 친구 사례).</div></div>
+    <div class="mod" style="margin-top:8px"><span class="badge g-red">물타기 금지</span><div class="mtxt">73~74년 소 선물 물타기로 한 달에 약 100만 달러 손실. "물타기는 실수를 복리로 키우는 것."</div></div></div>
+
+  <div class="card"><div class="ctitle"><span class="dot idot"></span>💼 직장인 투자 전략</div>
+    <ul class="lwl">
+    <li><b>자산 배분</b>: 80~90% 장기투자(인덱스), 10~15%만 투기(확률 게임).</li>
+    <li><b>30세·7천 달러라면</b>: 1순위 자기 사업("돈은 메인 스트리트에서 벌고 월가에서 잃는다"). 아니면 <b>중형 가치주 인덱스</b>(뱅가드·피델리티).</li>
+    <li>성장주보다 <b>가치주</b>: 장기 성과 우위, 폭락 때 덜 빠지고 빨리 회복. S&amp;P500 vs 나스닥 질문에도 가치주 펀드를 택함.</li>
+    <li>미국 종목은 모틀리풀·잭스로 15~20개로 압축 → 조건상 진입 구간에 올 때 매수.</li>
+    <li><b>데이트레이딩 비권장</b>: 수익의 바탕은 추세, 추세를 만드는 건 시간. 일봉·주봉이 훨씬 쉬움.</li>
+    <li>개인이 기관보다 유리: 작아서 쉽게 들어갔다 나올 수 있음.</li></ul>
+    <table class="lwt" style="margin-top:8px"><tr><th>연령</th><th>원칙</th></tr>
+    <tr><td>30대</td><td>회복 시간 길어 크게 베팅·위험 감수 가능</td></tr>
+    <tr><td>고령</td><td>보수적으로, 매매보다 탄탄한 투자</td></tr>
+    <tr><td>60대 은퇴</td><td>코스피 상시 매수는 지양 · 미국 가치주 ETF · 흥분하지 말 것</td></tr></table></div>
+
+  <div class="card"><div class="ctitle"><span class="dot gdot"></span>🎯 마지막 조언</div>
+    <ul class="lwl">
+    <li><b>작게 베팅</b>하고, 작은 포지션으로 <b>큰 움직임</b>을 잡아라.</li>
+    <li>손실에 익숙해져라. 작은 손실을 줄이면 좋은 거래 한 번으로 다 메운다.</li>
+    <li>트레이딩 ≠ 투자. 대부분은 장기 투자자가 맞다.</li>
+    <li>"믿되 확인하라." 직접 검증하고, 맞지 않으면 빨리 털어내라. 잘하게 되기까지 3~4년.</li>
+    <li>사칭 주의: 본인 상품은 <b>연간 전망 리포트뿐</b>, 강의·자금 운용 안 함.</li></ul></div>
+</div>
+</div>
 <div class="foot">금액 단위: 억원(순매수) · ETF/ETN 제외 · 색상: <span style="color:#d6213a">빨강=상승</span> / <span style="color:#0969da">파랑=하락</span><br>출처: 다음금융(KRX) · 투자 판단의 책임은 본인에게 있습니다.</div>
 
 <script>
@@ -702,12 +795,19 @@ const USNEWS = {"asof":"2026-11-13","items":[
   el.innerHTML=h;
 })();
 
+
+// ── 전문가조언 하위 카테고리 ──
+document.querySelectorAll('.exseg button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.exseg button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.querySelectorAll('[id^="ex-"]').forEach(c=>{ c.style.display=(c.id==='ex-'+b.dataset.ex)?'':'none'; });
+}));
 // ── 상단 탭 전환 (국내 / 미국 / 종베) ──
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
   const t=b.dataset.tab;
-  ['kr','us','jb'].forEach(k=>{ const c=document.getElementById('tab-'+k); if(c) c.style.display=(k===t)?'':'none'; });
+  ['kr','us','jb','ex'].forEach(k=>{ const c=document.getElementById('tab-'+k); if(c) c.style.display=(k===t)?'':'none'; });
   window.scrollTo({top:0,behavior:'smooth'});
 }));
 
